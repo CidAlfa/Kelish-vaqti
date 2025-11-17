@@ -1,5 +1,7 @@
 import datetime
 import asyncio
+import os
+import json
 import gspread
 from google.oauth2.service_account import Credentials
 from aiogram import Bot, Dispatcher, F
@@ -12,17 +14,24 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # ===== НАСТРОЙКИ =====
-BOT_TOKEN = "8013930431:AAH7pPMdsTnmO-IFpmpkZ71pjGobztLeYHE"
-SERVICE_FILE = "nomadic-bedrock-477215-t4-33fa855fcb7c.json"
+BOT_TOKEN = os.getenv("8013930431:AAH7pPMdsTnmO-IFpmpkZ71pjGobztLeYHE")  # теперь из Railway
 SPREADSHEET_NAME = "Kelish vaqti"
 UZB_TZ = datetime.timezone(datetime.timedelta(hours=5))
 
-# ===== GOOGLE SHEETS =====
+# ===== GOOGLE CREDENTIALS ИЗ PERENV =====
+GOOGLE_CREDS = os.getenv("GOOGLE_CREDENTIALS")
+
+if not GOOGLE_CREDS:
+    raise Exception("❌ GOOGLE_CREDENTIALS отсутствует в Railway Variables!")
+
+creds_dict = json.loads(GOOGLE_CREDS)
+
 SCOPES = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive",
 ]
-creds = Credentials.from_service_account_file(SERVICE_FILE, scopes=SCOPES)
+
+creds = Credentials.from_service_account_info(creds_dict, scopes=SCOPES)
 gc = gspread.authorize(creds)
 sheet = gc.open(SPREADSHEET_NAME).sheet1
 
@@ -31,9 +40,8 @@ bot = Bot(token=BOT_TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
 dp = Dispatcher()
 scheduler = AsyncIOScheduler(timezone="Asia/Tashkent")
 
-# Было: USERS = []  → Делаем словарь username -> chat_id
+# Было: USERS = [] → Делаем словарь username -> chat_id
 USERS: dict[str, int] = {}
-
 
 # ===== УТИЛИТЫ =====
 def get_record(username: str, date_str: str):
@@ -47,7 +55,6 @@ def get_record(username: str, date_str: str):
 
 def add_row(username, name, date_str, time_str, status, file_id="-", reason="-"):
     next_row = len(sheet.get_all_values()) + 1
-    # № проставим по порядку (next_row - 1), чтобы совпадало с твоей структурой
     sheet.append_row([next_row - 1, username, name, date_str, time_str, status, file_id, reason])
 
 
@@ -137,7 +144,7 @@ async def dont_come(message: Message):
 # ===== НАПОМИНАНИЯ =====
 async def remind_users():
     now = datetime.datetime.now(UZB_TZ)
-    weekday = now.weekday()  # 0=Пн ... 6=Вс
+    weekday = now.weekday()
     if weekday == 6:
         print("🕘 Sunday: skip reminders")
         return
@@ -197,7 +204,7 @@ async def start_cmd(message: Message):
     )
 
 
-# ===== /test_remind — ручной тест напоминания =====
+# ===== /test_remind =====
 @dp.message(F.text == "/test_remind")
 async def test_remind(message: Message):
     _remember_user(message)
@@ -209,7 +216,6 @@ async def test_remind(message: Message):
 async def main():
     print("✅ Бот запущен (учёт + опоздания + причины + напоминания).")
 
-    # Производственная логика (9:00–10:30 каждые 10 минут)
     scheduler.add_job(
         remind_users,
         CronTrigger(hour="9", minute="0-30/10", timezone="Asia/Tashkent"),
@@ -218,13 +224,6 @@ async def main():
         mark_absent_users,
         CronTrigger(hour=10, minute=30, timezone="Asia/Tashkent"),
     )
-
-    # --- ДЛЯ ТЕСТА В ВЕЧЕРНЕЕ ВРЕМЯ ---
-    # например, тест с 21:55 до 22:10 каждые 5 минут:
-    # scheduler.add_job(
-    #     remind_users,
-    #     CronTrigger(hour="21", minute="55,58,0,5,10", timezone="Asia/Tashkent"),
-    # )
 
     scheduler.start()
     await dp.start_polling(bot)
