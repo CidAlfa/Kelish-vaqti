@@ -14,7 +14,7 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning)
 
 # ===== НАСТРОЙКИ =====
-BOT_TOKEN = os.getenv("8013930431:AAH7pPMdsTnmO-IFpmpkZ71pjGobztLeYHE")  # теперь из Railway
+BOT_TOKEN = os.getenv("BOT_TOKEN")  # теперь из Railway
 SPREADSHEET_NAME = "Kelish vaqti"
 UZB_TZ = datetime.timezone(datetime.timedelta(hours=5))
 
@@ -231,3 +231,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
