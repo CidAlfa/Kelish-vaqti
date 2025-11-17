@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "nomadic-bedrock-477215-t4",
+  "private_key_id": "33fa855fcb7cfdba3ffaf55c59e904e94ef43956",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDJk284AR5tK40w\nuXEVe1GTHpINrlY0SVjFMTVDB16n+wSPa6WP7IFzy/paNWDgtvJFCNV85SSRseMv\nI1UFG40L/iPpdMkWIIeYZD+ylAsO32GI1gDkTuY7WmIlJRJZeBYTD3nHS22/wI8p\ne7uDKH6JqM6JYRnA+2TUlumysCNRjuauBsyTPS4Wu9T35zuUT5nl1ynbixrM2D6B\nsmLG6xs54UhiFLRRi4mqm/jF14MeQxHqXmlfeQW/4I5djxE7ib8XalWXBixt9EAw\nyuDK7QIdwyGBlMKr/BfaT97D8DuSPELZJ/GcT2lF6f46cr3lBaDHdkZKGoBC63uQ\nogFr8VETAgMBAAECggEAQ/yODn2SHZAK1tw03+Hv6YbuC985A/mZDylBpZHewxlO\nuHC+LoS+RKgPkE1gl2oc3FvWZYGDjABLd6KbElXwhJL62cqh5+ygzy1ArqJv+Fwv\nMU+8jURvMqWRZKXUQojWKSeXEzjFk18G6h7pZ5tI0nU08/DkFsqzf2BHAhWWU/Md\nRzo0RWJS8w8GA4QJKFAmfsJFPpDs0akGm1LWSngo6/KtnJsHGEpViYlLOScoNyrR\n0+0czbeMkiAaBGs7LWNZ9DAyVy94F+EdBfG+k+XE1Z/GYiFbQiqMxiVqz4FFXcHH\n6H7pDf3UBCrOae9PaSFtEQCDUNxY29+9xk8+FC8dwQKBgQDth1q4VcFsfXWpJBiZ\nIsfkXTxTCCkg5CbZidntHNddQXfRU0Swfchwkp/25nTdnqcn2UHJoBln+8fcP2iG\nzmnFyZXqE2nCU8zsvdkFlU6O6pXk7WBa9CXO5/rHQHtiLLxPd2W7HOxtBvSN7ofe\nBr6CI2xj5zeda1mOr1qsQjvE/wKBgQDZQFfRKgrmsLFD+vnBtbUfctKR4duXHGsR\nWEfPSnotSqVkuIuYIEbgKPQTojTz5vl7dCuIXcJzT8NQgHy2beIW3ZooiIAp5ref\nV7gUxjMmQjnKgEmPbOf+chNMFVZnEvS4baHEMyVwx7pjjFZtzrPSi2vEuK/QfoYL\n8Pi2UO8P7QKBgQDcAjZebVgGhEKak0uRdCzQciexBOsLgygU8OGBBejZgQ1ZPxZt\nn2QsGTO/voBa0lwjxdFwzzEZJpZdhAHuc3x3bhvEv4yDKZmzYrmEuWIVcGW8sL5C\nIMhwWGDpc+mU6rjVplL9OHIpHnsgh+MjHP4SjnsUIhNaZReD2RpUWdkAwwKBgFP3\nrHlpWIFFNZ5iuHmIM5MOHBjKRMco8rDngAm8bXBn83j0Yu/POdWVvpCAFxtV4IM4\nqUKximBrKcBJiOoxmjrgN58G8xI+3CW4D6vn1wkoe5Gq98N5gkkz6gV0EcsQ5okJ\nxoZAhm4KpB2pthYG2DW+MU79WuaooEKpRleg/GUZAoGBAJdXTi+yJ19TnCZQ9SmI\nhqjqkcoM9JuyF2QhKPfHfguBUsRJ0o3FSOBmiflVAikObzbSok8Q6u/Gzy2zo8/c\np/spOL0f3c8EqjsCmeTk1pCqi3kA1YTTUyKqk9Rrqnxe4e/88IOi3waq1qRYDA1z\nFq3QvHQcIVyNhJrBe0Wi2SfT\n-----END PRIVATE KEY-----\n",
+  "client_email": "arriaval-report@nomadic-bedrock-477215-t4.iam.gserviceaccount.com",
+  "client_id": "108618818635453311084",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/arriaval-report%40nomadic-bedrock-477215-t4.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
